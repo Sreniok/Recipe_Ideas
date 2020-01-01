@@ -18,13 +18,13 @@
     </div>
 
     <ul class="collapsible">
-        {% for cus in cuisine %}
+        {% for cuisine in cuisine %}
         <li>
             <div class="collapsible-header"><i class="material-icons">expand_more</i>
-                <a href="{{ url_for('get_recipe',)}}"><strong>{{cus.cuisine_name}}</strong></a>
+                <a href="{{ url_for('get_recipe')}}"><strong>{{cuisine.cuisine_name}}</strong></a>
             </div>
             <div class="collapsible-body"><span>
-                    {{cus.cuisine_description}}
+                    {{cuisine.cuisine_description}}
                 </span></div>
         </li>
         {% endfor %}

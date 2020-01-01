@@ -20,12 +20,12 @@
     <ul class="collapsible">
         {% for recip in recipe %}
         <li>
-            <div class="collapsible-header"><i class="material-icons">flag</i>
+            <div class="collapsible-header"><i class="material-icons">expand_more</i>
                 <a href="{{ url_for('recipe_description', recipe_id=recip._id)}}"><strong>{{recip.recipe_name}}</strong></a>
        
             </div>
             <div class="collapsible-body"><span>
-                    <p>d by <strong>{{recip.user_name}}</strong></p>
+                    <p>Add by: <strong>{{recip.user_name}}</strong></p>
                     <p>{{recip.recipe_description}}</p>
                 </span></div>
         </li>
