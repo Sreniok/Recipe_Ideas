@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% for recip in recipe %}
+    <div class="row">
+        <div class="col s12">
+            <h4>{{recip.recipe_name}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            User: {{recip.user_name}}
+        </div>
+        <div class="col s6">
+            Cocking Time: {{recip.preparation_time}}
+        </div>
+    </div>
+    <div class="col s12">
+        {{recip.recipe_description}}
+        <p>Cousine: {{recip.cuisine_name}}</p>
+    </div>
+    <div class="row">
+        <div class="paragraph">
+            <h5>Ingredients</h5>
+            <p>{{recip.ingredients}}</p>
+        </div>
+    </div>
+    <div class="paragraph">
+        <h5>Method</h5>
+        <div class="col s12">{{recip.method}}</div>
+    </div>
+    <div class="row id=buttons">
+        <div class="col s6">
+            <a href="{{url_for('edit_recipe')}}" class="waves-effect waves-light btn btn_small blue">Edit Recipe
+                <i class="material-icons right">edit</i></a>
+        </div>
+        <div class="col s6">
+            <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small red">Delete Recipe
+                <i class="material-icons right">delete_forever</i>
+            </a>
+        </div>
+    </div>
+
+
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}
