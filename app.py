@@ -41,8 +41,33 @@ def insert_recip():
     return redirect(url_for('get_recipe'))
 
 # Edit Recipe
-#@app.route('edit_recipe')
-#def edit_recipe():
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    all_cuisine = mongo.db.cuisine.find()
+    return render_template('edit_recipe.html', recipe=the_recipe, cuisine=all_cuisine)
+
+# Update Recipe
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipe = mongo.db.recipe
+    recipe.update({'_id': ObjectId(recipe_id)},
+    {
+    'recipe_name':request.form.get('recipe_name'),
+    'user_name':request.form.get('user_name'),
+    'cuisine_name':request.form.get('cuisine_name'),
+    'ingredients':request.form.get('ingredients'),
+    'method':request.form.get('method'),
+    'prepaation_time':request.form.get('prepaation_time'),
+    'recipe_description':request.form.get('recipe_description')
+    })
+    return redirect(url_for('get_recipe'))
+
+# Delete /recipe
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipe.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('get_recipe'))
 
 # User can add cusine
 @app.route('/add_cusine')
