@@ -6,7 +6,8 @@
         <div class="col s12">
             <h3>Recipes</h3>
             <div class="introduction">
-                <p>The application shows all cuisines along with the description after collapsing.  You can also add new cuisine by clicking "ADD CUISINE".</p>
+                <p>The application shows all cuisines along with the description after collapsing. You can also add new
+                    cuisine by clicking "ADD CUISINE".</p>
             </div>
             <div class="row">
                 <a href="{{url_for('add_cusine')}}" class="waves-effect waves-light btn btn_small">ADD CUISINE
@@ -23,12 +24,21 @@
             <div class="collapsible-header"><i class="material-icons">expand_more</i>
                 <a href="{{ url_for('get_recipe')}}"><strong>{{cuisine.cuisine_name}}</strong></a>
             </div>
-            <div class="collapsible-body"><span>
-                    {{cuisine.cuisine_description}}
-                </span></div>
+            <div class="collapsible-body">
+                <span>{{cuisine.cuisine_description}}</span>
+                <div class=" button-cusine">
+                <a href="{{url_for('edit_cuisine', cusine_id = cuisine._id)}}"
+                    class="waves-effect waves-light btn btn_small btn_style blue">Edit Cuisine
+                    <i class="material-icons right">edit</i></a>
+                <a href="{{url_for('delete_cuisine', cuisine_id = cuisine._id)}}"
+                    class="waves-effect waves-light btn btn_small btn_style red ">Delete Cuisine
+                    <i class="material-icons right">delete_forever</i>
+                </a>
+            </div>
+            </div>
+
         </li>
         {% endfor %}
     </ul>
 </div>
 {% endblock %}
-

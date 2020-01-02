@@ -17,7 +17,7 @@ def get_cuisine():
     return render_template("cuisine.html", cuisine=mongo.db.cuisine.find())
 
 
-# Get recipe from mongoDB
+# Get recipe from MongoDB
 @app.route('/get_recipe')
 def get_recipe():
     return render_template("recipes.html", recipe=mongo.db.recipe.find())
@@ -32,6 +32,7 @@ def recipe_description(recipe_id):
 def add_recipe():
     return render_template('add_recipe.html', cuisine=mongo.db.cuisine.find())
 
+# Insert recipe to the MongoDb
 @app.route('/insert_recip', methods=['POST'])
 def insert_recip():
     recipe = mongo.db.recipe
@@ -61,7 +62,7 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('get_recipe'))
 
-# Delete /recipe
+# Delete recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipe.remove({'_id': ObjectId(recipe_id)})
@@ -71,15 +72,36 @@ def delete_recipe(recipe_id):
 @app.route('/add_cusine')
 def add_cusine():
     return render_template('add_cusine.html', cuisine=mongo.db.cuisine.find())
-
+# Insert cuisine to MongoDB
 @app.route('/insert_cusine', methods=['POST'])
 def insert_cusine():
     cuisine = mongo.db.cuisine
     cuisine.insert_one(request.form.to_dict())
     return redirect(url_for('get_cuisine'))
 
+# Edit cusine
+@app.route('/edit_cuisine/<cusine_id>')
+def edit_cuisine(cusine_id):
+    the_cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cusine_id)})
+    all_cuisine = mongo.db.recipe.find()
+    return render_template('edit_cuisine.html', cuisine=the_cuisine, recipe=all_cuisine)
 
-    
+# Update cuisine
+@app.route('/update_cuisine/<cuisine_id>', methods=["POST"])
+def update_cuisine(cuisine_id):
+    cuisine = mongo.db.cuisine
+    cuisine.update({'_id': ObjectId(cuisine_id)},
+    {
+    'cuisine_name':request.form.get('cuisine_name'),
+    'cuisine_description':request.form.get('cuisine_description'),
+    })
+    return redirect(url_for('get_cuisine'))
+
+# Delete cuisine
+@app.route('/delete_cuisine/<cuisine_id>')
+def delete_cuisine(cuisine_id):
+    mongo.db.cuisine.remove({'_id': ObjectId(cuisine_id)})
+    return redirect(url_for('get_cuisine'))
 
 
 

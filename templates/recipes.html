@@ -27,7 +27,14 @@
             <div class="collapsible-body"><span>
                     <p>Add by: <strong>{{recip.user_name}}</strong></p>
                     <p>{{recip.recipe_description}}</p>
-                </span></div>
+                </span>
+                <div class=" button-cusine">
+                    <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style blue">Edit Recipe
+                        <i class="material-icons right">edit</i></a>
+                        <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style red">Delete Recipe
+                            <i class="material-icons right">delete_forever</i>
+                        </a>
+            </div>
         </li>
         {% endfor %}
     </ul>
