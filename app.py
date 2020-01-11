@@ -2,11 +2,15 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
-
+from os import path
+if path.exists("env.py"):
+  import env 
+  
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'food_recipe'
-app.config['MONGO_URI'] = 'mongodb+srv://Luca:sreniawski85@myfirstcluster0-3nxsy.mongodb.net/food_recipe?retryWrites=true&w=majority'
+SECRET_KEY = os.environ.get('SECRET_KEY') 
+app.config['MONGO_URI'] =  SECRET_KEY
 
 mongo = PyMongo(app)
 
@@ -69,9 +73,9 @@ def delete_recipe(recipe_id):
 def get_cuisine():
     return render_template("cuisine.html", cuisine=mongo.db.cuisine.find())
 
-@app.route('/cusine/<cuisine_id>')
-def cusine(cuisine_id): 
-    cuisine=mongo.db.cuisine.find({'_id': ObjectId(cuisine_id)}) 
+@app.route('/cusine/<cusines_name>')
+def cusine(cusines_name): 
+    cuisine=mongo.db.cuisine.find({'_id': ObjectId(cusines_name)}) 
     recipe=mongo.db.recipe.find()
     return render_template('found_recipes.html',recipe = recipe, cuisine = cuisine)
 
@@ -134,15 +138,18 @@ def search_cuisine(cuisine_id):
         return render_template("search_recipe.html")      
     return render_template("found_cuisines.html", recipes=recipes)
 
-# search recipes
+# search ingredients
 @app.route('/search_by_ingredients', methods=['GET', 'POST'])
 def search_by_ingredients():
     search_term = []
     if request.method == 'POST':
         search_term = request.form['ingredients']
+        recip = mongo.db.recipe.find_one({'$text': {'$search': search_term }})
+        print(recip)                 
     return render_template('found_ingredients.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
+    
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            # port=int(os.environ.get('PORT')),
+            port=int(os.environ.get('PORT')),
             debug=True)
