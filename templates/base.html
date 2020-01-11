@@ -9,31 +9,40 @@
 
 <body>
     <header>
-        <nav>
+        <nav class="col s4">
             <div class="nav-wrapper">
-                <a href="{{url_for('get_cuisine')}}" class="brand-logo">Recipes Book</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a href="{{url_for('get_recipe')}}" class="brand-logo">Recipes Book</a>
+                <a href="{{url_for('get_recipe')}}" data-target="mobile-demo" class="sidenav-trigger"><i
+                        class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="{{url_for('search_recipe')}}" class="material-icons serch-base">search</a></li>
                     <li><a href="{{url_for('get_cuisine')}}">Cusines</a></li>
                     <li><a href="{{url_for('get_recipe')}}">Recipes</a></li>
-                    <li><a href="#">Serch</a></li>
                 </ul>
                 <ul class="sidenav" id="mobile-demo">
-                    <li><a href="{{url_for('get_cuisine')}}">Cusines</a></li>
-                    <li><a href="{{url_for('get_recipe')}}">Recipes</a></li>
-                    <li><a href="#">Serch</a></li>
+                    <li><a href="{{url_for('get_cuisine')}}">Cusines<i class="material-icons">flag</i></a></li>
+                    <li><a href="{{url_for('get_recipe')}}">Recipes<i class="material-icons">subject</i></a></li>
+                    <li><a href="{{url_for('search_recipe')}}">Search<i class="material-icons">search</i></a></li>
                 </ul>
             </div>
         </nav>
         </div>
         </nav>
     </header>
-
-
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Recipes Book for people with a cooking idea
+                <a class="grey-text text-lighten-4 right" href="{{url_for('get_cuisine')}}">Home</a>
+            </div>
+        </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript">

@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col s12">
-            <h3>Recipes</h3>
+            <h3>Cuisine</h3>
             <div class="introduction">
                 <p>The application shows all cuisines along with the description after collapsing. You can also add new
                     cuisine by clicking "ADD CUISINE".</p>
@@ -22,7 +22,7 @@
         {% for cuisine in cuisine %}
         <li>
             <div class="collapsible-header"><i class="material-icons">expand_more</i>
-                <a href="{{ url_for('get_recipe')}}"><strong>{{cuisine.cuisine_name}}</strong></a>
+                <a href="{{ url_for('get_recipe', cuisine_id= cuisine._id)}}"><strong>{{cuisine.cuisine_name}}</strong></a>
             </div>
             <div class="collapsible-body">
                 <span>{{cuisine.cuisine_description}}</span>

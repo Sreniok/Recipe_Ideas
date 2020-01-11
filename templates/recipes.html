@@ -1,42 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-
     <div class="row">
         <div class="col s12">
             <h3>Recipes</h3>
             <div class="introduction">
-                <p>The app showing all the recipes. You can add a new recipe by clicking "add recipe". </p>
+                <p>The app showing all the recipes also you can search recipe by name and add a new recipe by clicking
+                    "add recipe". </p>
             </div>
-            <div class="row">
-                <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small">Add Recipe
-                    <i class="material-icons right">playlist_add</i>
-                </a>
-            </div>
-
         </div>
     </div>
 
-    <ul class="collapsible">
-        {% for recip in recipe %}
-        <li>
-            <div class="collapsible-header"><i class="material-icons">expand_more</i>
-                <a href="{{ url_for('recipe_description', recipe_id=recip._id)}}"><strong>{{recip.recipe_name}}</strong></a>
-       
-            </div>
-            <div class="collapsible-body"><span>
-                    <p>Add by: <strong>{{recip.user_name}}</strong></p>
-                    <p>{{recip.recipe_description}}</p>
-                </span>
-                <div class=" button-cusine">
-                    <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style blue">Edit Recipe
-                        <i class="material-icons right">edit</i></a>
-                        <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style red">Delete Recipe
+    <div class="row">
+        <div class="col s12" id="recipe">
+            <form action="{{url_for('search_by_name')}}" method="POST" class="col s12">
+                <div class="input-field">
+                    <input placeholder="Search by name" name="recipe_name" type="search" style="text-align: center;">
+                    <label class="label-icon" for="search"><i class="material-icons"
+                            style="padding-top: 11px;">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+        <ul class="collapsible">
+            {% for recip in recipe %}
+            <li>
+                <div class="collapsible-header"><i class="material-icons">expand_more</i>
+                    <a
+                        href="{{ url_for('recipe_description', recipe_id=recip._id)}}"><strong>{{recip.recipe_name}}</strong></a>
+                </div>
+                <div class="collapsible-body"><span>
+                        <p>Add by: <strong>{{recip.user_name}}</strong></p>
+                        <p>{{recip.recipe_description}}</p>
+                    </span>
+                    <div class=" button-cusine">
+                        <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}"
+                            class="waves-effect waves-light btn btn_small btn_style blue">Edit Recipe
+                            <i class="material-icons right">edit</i></a>
+                        <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}"
+                            class="waves-effect waves-light btn btn_small btn_style red">Delete Recipe
                             <i class="material-icons right">delete_forever</i>
                         </a>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
+                    </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col s12">
+        <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small"
+            style="margin-bottom: 15px;">Add Recipe
+            <i class="material-icons right">playlist_add</i>
+        </a>
+    </div>
 </div>
 {% endblock %}

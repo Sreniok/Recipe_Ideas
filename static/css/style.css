@@ -1,8 +1,75 @@
-.btn_style{
+#search_cont {
+    background-color: white;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#recipe {
+    background-color: white;
+}
+.container {
+    padding-left: 20px;
+}
+.btn_style {
     margin-top: 10px;
     margin: 0 auto !important;
     height: 25px !important;
     line-height: 25px !important;
     padding: 0 10px !important;
     font-size: 10px !important;
+}
+
+.btn_style_desc {
+    margin-top: 20px;
+    position: absolute;
+    top: 50%;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: url(/static/images/cook.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.collapsible-body{
+    background-color: #f7f5f8;
+}
+
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer {
+    padding-top: 0px !important;
+}
+
+.serch-base {
+    margin-top: 22px;
+    padding-right: 0px;
+}
+
+.brand-logo {
+    padding-left: 20px !important;
+}
+
+.search-icon {
+    background: rgb(35, 152, 136);
+    color: white;
+}
+
+.sidenav li>a>i {
+    margin: 0 5px 0 0 !important;
+}
+
+#search {
+    padding-left: 0px;
 }

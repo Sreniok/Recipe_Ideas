@@ -30,13 +30,13 @@
         <h5>Method</h5>
         <div class="col s12">{{recip.method}}</div>
     </div>
-    <div class="row id=buttons">
+    <div class="row wrapper">
         <div class="col s6">
-            <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small blue">Edit Recipe
+            <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style_desc blue">Edit Recipe
                 <i class="material-icons right">edit</i></a>
         </div>
         <div class="col s6">
-            <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small red">Delete Recipe
+            <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style_desc red">Delete Recipe
                 <i class="material-icons right">delete_forever</i>
             </a>
         </div>

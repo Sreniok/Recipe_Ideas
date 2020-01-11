@@ -1,6 +1,6 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
-from flask_pymongo import PyMongo
+from flask import Flask, render_template, redirect, request, url_for, flash
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
@@ -10,14 +10,10 @@ app.config['MONGO_URI'] = 'mongodb+srv://Luca:sreniawski85@myfirstcluster0-3nxsy
 
 mongo = PyMongo(app)
 
-# Get cusine from mongoDB
-@app.route('/')
-@app.route('/get_cuisine')
-def get_cuisine():
-    return render_template("cuisine.html", cuisine=mongo.db.cuisine.find())
-
+db_query = mongo.db.recipe
 
 # Get recipe from MongoDB
+app.route('/')
 @app.route('/get_recipe')
 def get_recipe():
     return render_template("recipes.html", recipe=mongo.db.recipe.find())
@@ -68,10 +64,22 @@ def delete_recipe(recipe_id):
     mongo.db.recipe.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipe'))
 
+# Get cusine from mongoDB
+@app.route('/get_cuisine')
+def get_cuisine():
+    return render_template("cuisine.html", cuisine=mongo.db.cuisine.find())
+
+@app.route('/cusine/<cuisine_id>')
+def cusine(cuisine_id): 
+    cuisine=mongo.db.cuisine.find({'_id': ObjectId(cuisine_id)}) 
+    recipe=mongo.db.recipe.find()
+    return render_template('found_recipes.html',recipe = recipe, cuisine = cuisine)
+
 # User can add cusine
 @app.route('/add_cusine')
 def add_cusine():
     return render_template('add_cusine.html', cuisine=mongo.db.cuisine.find())
+
 # Insert cuisine to MongoDB
 @app.route('/insert_cusine', methods=['POST'])
 def insert_cusine():
@@ -103,10 +111,36 @@ def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({'_id': ObjectId(cuisine_id)})
     return redirect(url_for('get_cuisine'))
 
+# Search for recipes will preload options for cuisines
+@app.route('/search_recipe')
+def search_recipe():
+    the_recipe = mongo.db.recipe.find()
+    all_cuisine = mongo.db.cuisine.find()
+    return render_template("search_recipe.html", cuisine=all_cuisine, recipe=the_recipe)
 
+# search recipes
+@app.route('/search_by_name', methods=['GET', 'POST'])
+def search_by_name():
+    search_term = []
+    if request.method == 'POST':
+        search_term = request.form['recipe_name']
+    return render_template('found_recipes.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
 
+# search cuisines
+@app.route('/search_cuisine/<cuisine_id>')
+def search_cuisine(cuisine_id):
+    recipes = mongo.db.recipe.find.find({'cuisine_name' : cuisine_id})
+    if recipes.count() == 0:
+        return render_template("search_recipe.html")      
+    return render_template("found_cuisines.html", recipes=recipes)
 
-
+# search recipes
+@app.route('/search_by_ingredients', methods=['GET', 'POST'])
+def search_by_ingredients():
+    search_term = []
+    if request.method == 'POST':
+        search_term = request.form['ingredients']
+    return render_template('found_ingredients.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
