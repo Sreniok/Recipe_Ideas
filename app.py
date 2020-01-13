@@ -16,7 +16,7 @@ app.config['MONGO_URI'] =  SECRET_KEY
 mongo = PyMongo(app)
 
 # Get recipe from MongoDB
-
+@app.route('/')
 @app.route('/get_recipe')
 def get_recipe():
     return render_template("recipes.html", recipe=mongo.db.recipe.find())
