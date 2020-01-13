@@ -9,8 +9,8 @@ if path.exists("env.py"):
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'food_recipe'
-SECRET_KEY = os.environ.get('SECRET_KEY') 
-app.config['MONGO_URI'] =  SECRET_KEY
+
+app.config['MONGO_URI'] = 'mongodb+srv://Luca:sreniawski85@myfirstcluster0-3nxsy.mongodb.net/food_recipe?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
@@ -151,5 +151,5 @@ def search_by_ingredients():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+            # port=int(os.environ.get('PORT')),
             debug=True)
