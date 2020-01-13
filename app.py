@@ -2,9 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
-from os import path
-if path.exists("env.py"):
-  import env 
+
   
 app = Flask(__name__)
 
@@ -131,15 +129,15 @@ def search_by_name():
     return render_template('found_recipes.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
 
 # search cuisines
-@app.route('/search_cuisine/<cuisine_id>')
+"""@app.route('/search_cuisine/<cuisine_id>')
 def search_cuisine(cuisine_id):
     recipes = mongo.db.recipe.find.find({'cuisine_name' : cuisine_id})
     if recipes.count() == 0:
         return render_template("search_recipe.html")      
-    return render_template("found_cuisines.html", recipes=recipes)
+    return render_template("found_cuisines.html", recipes=recipes)"""
 
 # search ingredients
-@app.route('/search_by_ingredients', methods=['GET', 'POST'])
+"""@app.route('/search_by_ingredients', methods=['GET', 'POST'])
 def search_by_ingredients():
     search_term = []
     if request.method == 'POST':
@@ -147,7 +145,7 @@ def search_by_ingredients():
         recip = mongo.db.recipe.find_one({'$text': {'$search': search_term }})
         print(recip)                 
     return render_template('found_ingredients.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
-    
+    """
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
