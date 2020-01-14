@@ -4,12 +4,26 @@
     text-align: center;
 }
 
+.serch-base {
+    margin-top: 22px;
+    padding-right: 0px;
+    color: black;
+}
+
+.nav-text {
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    color: black;
+}
+
 #recipe {
     background-color: white;
 }
+
 .container {
     margin-left: 310px !important;
 }
+
 .btn_style {
     margin-top: 10px;
     margin: 0 auto !important;
@@ -28,6 +42,11 @@
 .nav-wrapper {
     background: #e1e4e3;
 }
+
+li {
+    color: black;
+}
+
 .wrapper {
     text-align: center;
 }
@@ -37,6 +56,12 @@
     color: black !important;
     font-size: 50px !important;
 }
+
+#img-logo {
+    width: auto;
+    height: 90px;
+}
+
 body {
     display: flex;
     min-height: 100vh;
@@ -47,7 +72,7 @@ body {
     background-attachment: fixed;
 }
 
-.collapsible-body{
+.collapsible-body {
     background-color: #f7f5f8;
 }
 

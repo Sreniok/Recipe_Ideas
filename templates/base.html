@@ -11,13 +11,14 @@
     <header>
         <nav class="col s4">
             <div class="nav-wrapper">
+                <img id= img-logo src="/static/images/chef.png">
                 <a href="{{url_for('get_recipe')}}" class="brand-logo">Recipes Book</a>
                 <a href="{{url_for('get_recipe')}}" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{url_for('search_recipe')}}" class="material-icons serch-base">search</a></li>
-                    <li><a href="{{url_for('get_cuisine')}}">Cusines</a></li>
-                    <li><a href="{{url_for('get_recipe')}}">Recipes</a></li>
+                    <li><a href="{{url_for('get_cuisine')}}" class="nav-text">Cusines</a></li>
+                    <li><a href="{{url_for('get_recipe')}}" class="nav-text">Recipes</a></li>
                 </ul>
                 <ul class="sidenav" id="mobile-demo">
                     <li><a href="{{url_for('get_cuisine')}}">Cusines<i class="material-icons">flag</i></a></li>

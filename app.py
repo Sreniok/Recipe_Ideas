@@ -8,12 +8,8 @@ if path.exists("env.py"):
   
 app = Flask(__name__)
 MONGO_URI = os.environ.get('MONGO_URI')
-MONGO_DBNAME = os.environ.get('MONGO_DBNAME')
-SECRET_KEY = os.environ.get('SECRET_KEY')
 
 app.config["MONGO_URI"] = MONGO_URI
-app.config['MONGO_DBNAME'] = MONGO_DBNAME
-app.config['SECRET_KEY'] = SECRET_KEY
 
 
 
@@ -158,5 +154,5 @@ def search_by_ingredients():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+            #port=int(os.environ.get('PORT')),
             debug=True)
