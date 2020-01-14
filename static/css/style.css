@@ -43,10 +43,6 @@
     background: #e1e4e3;
 }
 
-li {
-    color: black;
-}
-
 .wrapper {
     text-align: center;
 }
@@ -60,6 +56,23 @@ li {
 #img-logo {
     width: auto;
     height: 90px;
+}
+
+#img-recipe {
+    height: auto;
+    width: 598px;
+    border-radius: 15px;
+}
+
+.recip_title {
+    font-family: Girassol;
+    text-align: center;
+    font-size: 30px;
+    background-color: #b03827;
+}
+
+#recipe_name {
+    color: #bdbbbb;
 }
 
 body {
@@ -83,6 +96,15 @@ main {
 
 .page-footer {
     padding-top: 0px !important;
+    text-align: center;
+    color: black;
+    background: #e1e4e3 !important;
+}
+
+.footer-text {
+    font-family: 'Indie Flower', cursive;
+    font-size: 23px;
+    color: black;
 }
 
 .serch-base {
@@ -105,4 +127,9 @@ main {
 
 #search {
     padding-left: 0px;
+}
+
+#recipe_list {
+    border-style: groove;
+    margin:0 0 10px 0; 
 }

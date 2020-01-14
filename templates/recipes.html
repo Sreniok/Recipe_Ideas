@@ -8,6 +8,7 @@
                 <p>The app showing all the recipes also you can search recipe by name and add a new recipe by clicking
                     "add recipe". </p>
             </div>
+
         </div>
     </div>
 
@@ -22,11 +23,20 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="row table">
+
         <ul class="collapsible">
             {% for recip in recipe %}
-            <li>
+            
+            <li id=recipe_list>
+                <div class="recip_title">
+                    <a id=recipe_name
+                        href="{{ url_for('recipe_description', recipe_id=recip._id)}}"><strong>{{recip.recipe_name}}</strong></a>
+                </div>
                 <div class="collapsible-header"><i class="material-icons">expand_more</i>
-                    <a href="{{ url_for('recipe_description', recipe_id=recip._id)}}"><strong>{{recip.recipe_name}}</strong></a>
+                    <img id=img-recipe src="{{recip.recipe_image_url}}" alt="{{recip.recipe_name}}">
                 </div>
                 <div class="collapsible-body"><span>
                         <p>Add by: <strong>{{recip.user_name}}</strong></p>
@@ -41,13 +51,17 @@
                             <i class="material-icons right">delete_forever</i>
                         </a>
                     </div>
+                   
             </li>
             {% endfor %}
         </ul>
+        
+        
     </div>
     <div class="col s12">
         <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small"
-            style="margin-bottom: 15px;">Add Recipe
+            style="margin-bottom: 15px;">Add
+            Recipe
             <i class="material-icons right">playlist_add</i>
         </a>
     </div>
