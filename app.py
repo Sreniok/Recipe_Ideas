@@ -3,15 +3,17 @@ from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from os import path
+import sys
 if path.exists("env.py"):
   import env 
   
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = 'food_recipe'
+MONGO_URI = os.getenv("MONGO_URI")
 
-SECRET_KEY = os.environ.get('SECRET_KEY') 
-app.config['MONGO_URI'] =  SECRET_KEY
+
+app.config["MONGO_DBNAME"] = 'food_recipe'
+app.config['MONGO_URI'] =  MONGO_URI
 
 mongo = PyMongo(app)
 
@@ -57,7 +59,8 @@ def update_recipe(recipe_id):
     'ingredients':request.form.get('ingredients'),
     'method':request.form.get('method'),
     'prepaation_time':request.form.get('prepaation_time'),
-    'recipe_description':request.form.get('recipe_description')
+    'recipe_description':request.form.get('recipe_description'),
+    'recipe_image_url': request.form.get('recipe_image_url')
     })
     return redirect(url_for('get_recipe'))
 
@@ -150,5 +153,5 @@ def search_by_ingredients():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+            #port=int(os.environ.get('PORT')),
             debug=True)
