@@ -1,3 +1,6 @@
+.row .col {
+    padding: 0 0 !important;
+}
 #search_cont {
     background-color: white;
     padding-top: 20px;
@@ -20,9 +23,12 @@
     background-color: white;
 }
 
+
+
 .container {
     margin-left: 310px !important;
 }
+
 
 .btn_style {
     margin-top: 10px;
@@ -37,6 +43,9 @@
     margin-top: 20px;
     position: absolute;
     top: 50%;
+}
+.btn_add_cuisine {
+    margin: 0;
 }
 
 .nav-wrapper {
@@ -68,11 +77,27 @@
     font-family: Girassol;
     text-align: center;
     font-size: 30px;
-    background-color: #b03827;
+    background-color: #d3d6d5;
 }
 
 #recipe_name {
-    color: #bdbbbb;
+    color: #797777;
+}
+
+#img-cuisine {
+    width: 50px;
+}
+
+#cuisine_name {
+    font-size: 31px;
+    padding-left: 20px;
+    font-family: Gelasio;
+    color: #797777;
+    background-color: #d3d6d5;
+}
+
+.cusine_list {
+    background-color: #d3d6d5 !important;
 }
 
 body {
@@ -105,6 +130,8 @@ main {
     font-family: 'Indie Flower', cursive;
     font-size: 23px;
     color: black;
+    padding-left: 340px;
+    margin: 0 0 0 0 !important;
 }
 
 .serch-base {
@@ -131,5 +158,18 @@ main {
 
 #recipe_list {
     border-style: groove;
-    margin:0 0 10px 0; 
+    margin: 0 0 10px 0;
+}
+
+#cuisine_list {
+    border-style: groove;
+    margin: 0 0 10px 0;
+}
+
+.search_recipe {
+    border: groove;
+}
+
+.button-cusine {
+    padding-top: 13px;
 }

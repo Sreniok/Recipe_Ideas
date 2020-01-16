@@ -9,7 +9,7 @@
                 <p>The application shows all cuisines along with the description after collapsing. You can also add new
                     cuisine by clicking "ADD CUISINE".</p>
             </div>
-            <div class="row">
+            <div class="row btn_add_cuisine">
                 <a href="{{url_for('add_cusine')}}" class="waves-effect waves-light btn btn_small">ADD CUISINE
                     <i class="material-icons right">playlist_add</i>
                 </a>
@@ -20,9 +20,10 @@
 
     <ul class="collapsible">
         {% for cuisine in cuisine %}
-        <li>
-            <div class="collapsible-header"><i class="material-icons">expand_more</i>
-                <a href="{{ url_for('get_recipe', cuisine_id= cuisine._id)}}"><strong>{{cuisine.cuisine_name}}</strong></a>
+        <li id=cuisine_list>
+            <div class="collapsible-header cusine_list"><i class="material-icons">expand_more</i>
+                <img id=img-cuisine src="{{cuisine.cuisine_image}}" alt="{{cuisine.cuisine_name}}">
+                <a id=cuisine_name href="{{ url_for('get_recipe', cuisine_id= cuisine._id)}}"><strong>{{cuisine.cuisine_name}}</strong></a>
             </div>
             <div class="collapsible-body">
                 <span>{{cuisine.cuisine_description}}</span>
