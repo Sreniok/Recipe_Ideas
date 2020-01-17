@@ -136,13 +136,13 @@ def search_by_name():
     return render_template('found_recipes.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
 
 # search cuisines
-@app.route('/search_cuisine', methods=['GET', 'POST'])
-def search_cuisine():
-    cuisines = request.form.get('cuisine_name')
-    filter_by = {}
-    filter_by['cuisine_name'] = cuisines
-    return render_template("found_cuisines.html",
-                               cuisines=mongo.db.recipe.find())
+@app.route('/search_cuisine/<cuisine_name>')
+def search_cuisine(cuisine_name):
+    recipe = mongo.db.recipe.find_one({'recipe' : cuisine_name})
+    if recipe.count() == 0:
+        return render_template("found_cuisines.html")      
+    return render_template("found_cuisines.html", recipe=recipe)
+
 
 # search ingredients
 @app.route('/search_by_ingredients', methods=['GET', 'POST'])
@@ -161,5 +161,5 @@ def dashboard():
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+            #port=int(os.environ.get('PORT')),
             debug=True)

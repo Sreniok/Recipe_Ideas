@@ -21,7 +21,7 @@
             <li>
                 <div class="collapsible-header"><i class="material-icons">expand_more</i>
                     <a
-                        href="{{ url_for('recipe_description',cuisines= recipe._cuisine_name)}}"><strong>{{recipe.cuisine_name}}</strong></a>
+                        href="{{ url_for('recipe_description',recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
 
                 </div>
                 <div class="collapsible-body"><span>

@@ -19,8 +19,7 @@
                 </button>
             </div>
         </form>
-
-        <form action="{{url_for('search_cuisine', cuisine_id = cuisine._id)}}" method="POST" class="col s12">
+        <form action="{{url_for('search_cuisine', cuisine_name = recipe.cuisine_name)}}" method="POST" class="col s12">
             <div class="input-field col s8 ">
                 <select name="cuisine_name">
                     <option value="" disabled selected>Choose Cuisines</option>
