@@ -26,8 +26,9 @@ def get_recipe():
 
 # Get description from mongoDB
 @app.route('/recipe_description/<recipe_id>')
-def recipe_description(recipe_id):  
-    return render_template('recipe_description.html', recipe=mongo.db.recipe.find({"_id": ObjectId(recipe_id)}))
+def recipe_description(recipe_id):
+    recipe = mongo.db.recipe.find({"_id": ObjectId(recipe_id)})
+    return render_template('recipe_description.html',recipe = recipe )
 
 # User can add recipe
 @app.route('/add_recipe')
@@ -59,7 +60,7 @@ def update_recipe(recipe_id):
     'cuisine_name':request.form.get('cuisine_name'),
     'ingredients':request.form.get('ingredients'),
     'method':request.form.get('method'),
-    'prepaation_time':request.form.get('prepaation_time'),
+    'cocking_time':request.form.get('cocking_time'),
     'recipe_description':request.form.get('recipe_description'),
     'recipe_image_url': request.form.get('recipe_image_url')
     })
@@ -151,8 +152,14 @@ def search_by_ingredients():
         search_term = request.form['ingredients']
     return render_template('found_ingredients.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
     
+# dashboard charts
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
+
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+            #port=int(os.environ.get('PORT')),
             debug=True)

@@ -5,25 +5,28 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Gelasio|Girassol|Indie+Flower&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css?family=Gelasio|Girassol|Indie+Flower&display=swap" rel="stylesheet">
+</head>
 
 <body>
-    <header>
+    <header class="header">
         <nav class="col s4">
             <div class="nav-wrapper">
-                <img id= img-logo src="/static/images/chef.png">
+                <img id=img-logo src="/static/images/chef.png">
                 <a href="{{url_for('get_recipe')}}" class="brand-logo">Recipes Book</a>
                 <a href="{{url_for('get_recipe')}}" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{url_for('search_recipe')}}" class="material-icons serch-base">search</a></li>
-                    <li><a href="{{url_for('get_cuisine')}}" class="nav-text">Cusines</a></li>
+                    <li><a href="{{ url_for('dashboard') }}"><i class="material-icons" style="color: black;">insert_chart</i></a></li>
+                    <li><a href="{{url_for('get_cuisine')}}" class="nav-text">Cuisines</a></li>
                     <li><a href="{{url_for('get_recipe')}}" class="nav-text">Recipes</a></li>
                 </ul>
                 <ul class="sidenav" id="mobile-demo">
-                    <li><a href="{{url_for('get_cuisine')}}">Cusines<i class="material-icons">flag</i></a></li>
+                    <li><a href="{{url_for('get_cuisine')}}">Cuisines<i class="material-icons">flag</i></a></li>
                     <li><a href="{{url_for('get_recipe')}}">Recipes<i class="material-icons">subject</i></a></li>
                     <li><a href="{{url_for('search_recipe')}}">Search<i class="material-icons">search</i></a></li>
+                    <li><a href="{{ url_for('dashboard') }}"><i class="material-icons" style="color: black;">insert_chart</i></a></li>
                 </ul>
             </div>
         </nav>
@@ -31,10 +34,8 @@
         </nav>
     </header>
     <main>
-        <div class="container">
-            {% block content %}
-            {% endblock %}
-        </div>
+        {% block content %}
+        {% endblock %}
     </main>
     <footer class="page-footer">
         <div class="footer-copyright">

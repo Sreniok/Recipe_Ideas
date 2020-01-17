@@ -1,6 +1,12 @@
-.row .col {
+.container {
+    padding-left: 310px;
+    margin-left: 310px !important;
+}
+
+#recipe {
     padding: 0 0 !important;
 }
+
 #search_cont {
     background-color: white;
     padding-top: 20px;
@@ -23,13 +29,6 @@
     background-color: white;
 }
 
-
-
-.container {
-    margin-left: 310px !important;
-}
-
-
 .btn_style {
     margin-top: 10px;
     margin: 0 auto !important;
@@ -44,6 +43,7 @@
     position: absolute;
     top: 50%;
 }
+
 .btn_add_cuisine {
     margin: 0;
 }
@@ -85,7 +85,7 @@
 }
 
 #img-cuisine {
-    width: 50px;
+    width: 70px;
 }
 
 #cuisine_name {
@@ -172,4 +172,20 @@ main {
 
 .button-cusine {
     padding-top: 13px;
+}
+
+.charts {
+padding-left: 75px;
+}
+
+.chart_title {
+    font-family: Gelasio;
+    text-align: center;
+    padding-top: 30px;
+
+}
+.dashboard {
+    background-color: #ffffff;
+    margin-top: -37px;
+    margin-bottom: -23px;
 }

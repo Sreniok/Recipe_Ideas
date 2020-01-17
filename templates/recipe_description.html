@@ -11,14 +11,15 @@
     <div class="row">
         <div class="col s6">
             User: {{recip.user_name}}
+
         </div>
         <div class="col s6">
-            Cocking Time: {{recip.preparation_time}}
+            Cocking Time: {{recip.cocking_time}}
         </div>
     </div>
     <div class="col s12">
         {{recip.recipe_description}}
-        <p>Cousine: {{recip.cuisine_name}}</p>
+        <p>Cuisines: {{recip.cuisine_name}}</p>
     </div>
     <div class="row">
         <div class="paragraph">
@@ -32,11 +33,13 @@
     </div>
     <div class="row wrapper">
         <div class="col s6">
-            <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style_desc blue">Edit Recipe
+            <a href="{{url_for('edit_recipe', recipe_id = recip._id)}}"
+                class="waves-effect waves-light btn btn_small btn_style_desc blue">Edit Recipe
                 <i class="material-icons right">edit</i></a>
         </div>
         <div class="col s6">
-            <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}" class="waves-effect waves-light btn btn_small btn_style_desc red">Delete Recipe
+            <a href="{{url_for('delete_recipe', recipe_id = recip._id)}}"
+                class="waves-effect waves-light btn btn_small btn_style_desc red">Delete Recipe
                 <i class="material-icons right">delete_forever</i>
             </a>
         </div>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="dashboard">
+    <div class="row coll s12">
+        <h3 class="text-center chart_title">Charts</h3>
+        <div class="coll s6 charts"><iframe
+                style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+                width="640" height="480"
+                src="https://charts.mongodb.com/charts-project-0-kuigs/embed/charts?id=d372db54-fd31-43c6-b7b5-87307263df42&tenant=c92f74dc-8535-45f8-bf46-004aad64cc08&autorefresh=60&theme=light"></iframe>
+            <iframe
+                style="margin-left: 25px; background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+                width="640" height="480"
+                src="https://charts.mongodb.com/charts-project-0-kuigs/embed/charts?id=9c9f2164-0203-493c-93f8-7a9579d48ef3&tenant=c92f74dc-8535-45f8-bf46-004aad64cc08&autorefresh=60&theme=light"></iframe>
+        </div>
+        <div class="coll s12 charts">
+            <iframe
+                style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+                width="96%" height="480"
+                src="https://charts.mongodb.com/charts-project-0-kuigs/embed/charts?id=ae970e30-8617-4cf1-8726-39c43d3fc9ca&tenant=c92f74dc-8535-45f8-bf46-004aad64cc08&theme=light"></iframe>></iframe>
+        </div>
+    </div>
+    {% endblock %}

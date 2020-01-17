@@ -31,7 +31,7 @@
                 <div class="input-field col s12 ">
                     <i class="material-icons prefix">room</i>
                     <select id="cuisine" name="cuisine_name">
-                        <option value="" disabled selected>Choose Cuisine</option>
+                        <option value="" disabled selected>Choose Cuisines</option>
                         {% for cuisine in cuisine %}
                         {% if cuisine.cuisine_name == recipe.cuisine_name %}
                         <option value="{{cuisine.cuisine_name}}" selected>{{cuisine.cuisine_name}}</option>
@@ -40,7 +40,7 @@
                         {% endif %}
                         {% endfor %}
                     </select>
-                    <label>Cuisine</label>
+                    <label>Country</label>
                 </div>
             </div>
             <div class="row">
@@ -69,9 +69,9 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">alarm</i>
-                    <input id="preparation_time" name="preparation_time" type="text" class="materialize-textarea"
-                        value="{{recipe.preparation_time}}">
-                    <label for="icon_prefix">Preparation time</label>
+                    <input id="cocking_time" name="cocking_time" type="text" class="materialize-textarea"
+                        value="{{recipe.cocking_time}}">
+                    <label for="icon_prefix">Cocking Time</label>
                 </div>
             </div>
             <div class="row">

@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="container">
-<h1>Add Recipe</h1>
+    <h1>Add Recipe</h1>
     <div class="row">
         <form action="{{ url_for('insert_recip') }}" method="POST" class="col s12">
             <div class="row">
@@ -28,12 +28,12 @@
                 <div class="input-field col s12 ">
                     <i class="material-icons prefix">room</i>
                     <select id="cuisine" name="cuisine_name">
-                        <option value="" disabled selected>Choose Cuisine</option>
+                        <option value="" disabled selected>Choose Cuisines</option>
                         {% for cus in cuisine %}
                         <option value="{{cus.cuisine_name}}">{{cus.cuisine_name}}</option>
                         {% endfor %}
                     </select>
-                    <label>Cuisine</label>
+                    <label>Country</label>
                 </div>
             </div>
             <div class="row">
@@ -60,8 +60,8 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">alarm</i>
-                    <input id="preparation_time" name="preparation_time" type="text" class="materialize-textarea">
-                    <label for="icon_prefix">Preparation time</label>
+                    <input id="cocking_time" name="cocking_time" type="text" class="materialize-textarea">
+                    <label for="icon_prefix">Cocking Time</label>
                 </div>
             </div>
             <div class="row">
