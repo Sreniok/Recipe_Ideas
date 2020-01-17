@@ -16,14 +16,18 @@
         </div>
     </div>
     <ul class="collapsible">
-        <li>
+        <li id=recipe_list>
+            <div class="recip_title">
+                <a id=recipe_name
+                    href="{{ url_for('recipe_description', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
+            </div>
             <div class="collapsible-header"><i class="material-icons">expand_more</i>
-                <a
-                    href="{{ url_for('recipe_description', recipe_id = recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
+                <img id=img-recipe src="{{recipe.recipe_image_url}}" alt="{{recipe.recipe_name}}">
             </div>
             <div class="collapsible-body"><span>
-                    <p>Add by: <strong>{{recipe.user_name}}</strong></p>
-                    <p>{{recipe.recipe_description}}</p>
+                    Add by: <strong>{{recipe.user_name}}</strong> &emsp; Cooking Time: {{recipe.cooking_time}}
+                    <hr>
+                    {{recipe.recipe_description}}
                 </span>
                 <div class=" button-cusine">
                     <a href="{{url_for('edit_recipe', recipe_id = recipe._id)}}"

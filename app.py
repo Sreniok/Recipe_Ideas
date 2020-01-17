@@ -135,11 +135,9 @@ def search_by_name():
 # Search cuisines
 @app.route('/search_cuisine/<cuisine_name>')
 def search_cuisine(cuisine_name):
-    search_term = request.form['cuisine_name']  
-    recipe = mongo.db.recipe.find_one({'recipe' : search_term})
+    search_term = request.form.get('cuisine_name')  
+    recipe = mongo.db.recipe.find({'recipe' : search_term})
     print(recipe)
-    if recipe.count() == 0:
-        search_term = request.form['cuisine_name']    
     return render_template("found_cuisines.html", recipe=recipe)
 
 # Search ingredients
