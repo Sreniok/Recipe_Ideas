@@ -60,7 +60,7 @@ def update_recipe(recipe_id):
     'cuisine_name':request.form.get('cuisine_name'),
     'ingredients':request.form.get('ingredients'),
     'method':request.form.get('method'),
-    'cocking_time':request.form.get('cocking_time'),
+    'cooking_time':request.form.get('cooking_time'),
     'recipe_description':request.form.get('recipe_description'),
     'recipe_image_url': request.form.get('recipe_image_url')
     })
@@ -138,9 +138,11 @@ def search_by_name():
 # search cuisines
 @app.route('/search_cuisine/<cuisine_name>')
 def search_cuisine(cuisine_name):
-    recipe = mongo.db.recipe.find_one({'recipe' : cuisine_name})
+    search_term = request.form['cuisine_name']  
+    recipe = mongo.db.recipe.find_one({'recipe' : search_term})
+    print(recipe)
     if recipe.count() == 0:
-        return render_template("found_cuisines.html")      
+        search_term = request.form['cuisine_name']    
     return render_template("found_cuisines.html", recipe=recipe)
 
 
@@ -161,5 +163,5 @@ def dashboard():
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            #port=int(os.environ.get('PORT')),
+            port=int(os.environ.get('PORT')),
             debug=True)
