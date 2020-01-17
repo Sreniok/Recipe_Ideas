@@ -11,20 +11,19 @@
     <div class="row">
         <div class="col s6">
             User: {{recip.user_name}}
-
         </div>
         <div class="col s6">
-            cooking Time: {{recip.cooking_time}}
+            Cooking Time: {{recip.cooking_time}}
         </div>
     </div>
     <div class="col s12">
         {{recip.recipe_description}}
-        <p>Cuisines: {{recip.cuisine_name}}</p>
+        Cuisines: {{recip.cuisine_name}}
     </div>
     <div class="row">
         <div class="paragraph">
             <h5>Ingredients</h5>
-            <p>{{recip.ingredients}}</p>
+            {{recip.ingredients}}
         </div>
     </div>
     <div class="paragraph">
@@ -44,11 +43,6 @@
             </a>
         </div>
     </div>
-
-
-
     {% endfor %}
 </div>
-
-
 {% endblock %}

@@ -11,9 +11,6 @@ MONGO_URI = os.environ.get('MONGO_URI')
 
 app.config["MONGO_URI"] = MONGO_URI
 
-
-
-
 app.config['MONGO_URI'] =  MONGO_URI
 
 mongo = PyMongo(app)
@@ -127,7 +124,7 @@ def search_recipe():
     all_cuisine = mongo.db.cuisine.find()
     return render_template("search_recipe.html", cuisine=all_cuisine, recipe=the_recipe)
 
-# search recipes
+# Search recipes
 @app.route('/search_by_name', methods=['GET', 'POST'])
 def search_by_name():
     search_term = []
@@ -135,7 +132,7 @@ def search_by_name():
         search_term = request.form['recipe_name']
     return render_template('found_recipes.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
 
-# search cuisines
+# Search cuisines
 @app.route('/search_cuisine/<cuisine_name>')
 def search_cuisine(cuisine_name):
     search_term = request.form['cuisine_name']  
@@ -145,8 +142,7 @@ def search_cuisine(cuisine_name):
         search_term = request.form['cuisine_name']    
     return render_template("found_cuisines.html", recipe=recipe)
 
-
-# search ingredients
+# Search ingredients
 @app.route('/search_by_ingredients', methods=['GET', 'POST'])
 def search_by_ingredients():
     search_term = []
@@ -154,14 +150,12 @@ def search_by_ingredients():
         search_term = request.form['ingredients']
     return render_template('found_ingredients.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
     
-# dashboard charts
+# Dashboard charts
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
-
-    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+            #port=int(os.environ.get('PORT')),
             debug=True)

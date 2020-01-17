@@ -1,23 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
 
+<div class="container">
     <div class="row">
         <div class="col s12">
             <h3>Cuisines</h3>
             <div class="introduction">
                 <p>The app shows all Cuisines, dropdown menu shows a description of cuisines. You can also add new
-                    country by click  ing "Add Cuisines".</p>
+                    country by clicking "Add Cuisines".</p>
             </div>
             <div class="row btn_add_cuisine">
                 <a href="{{url_for('add_cusine')}}" class="waves-effect waves-light btn btn_small">Add Cuisines
                     <i class="material-icons right">playlist_add</i>
                 </a>
             </div>
-
         </div>
     </div>
-
     <ul class="collapsible">
         {% for cuisine in cuisine %}
         <li id=cuisine_list>
@@ -38,7 +36,6 @@
                     </a>
                 </div>
             </div>
-
         </li>
         {% endfor %}
     </ul>
