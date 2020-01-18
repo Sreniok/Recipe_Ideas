@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Add Cuisines</h1>
     <div class="row">
-        <form action="{{ url_for('insert_cusine') }}" method="POST" class="col s12">
+        <form name="add_cuisines" action="{{ url_for('insert_cusine') }}" onsubmit="return validateFormCuisines()" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">flag</i>

@@ -30,6 +30,7 @@ def recipe_description(recipe_id):
 # User can add recipe
 @app.route('/add_recipe')
 def add_recipe():
+    
     return render_template('add_recipe.html', cuisine=mongo.db.cuisine.find())
 
 # Insert recipe to the MongoDb
@@ -133,11 +134,12 @@ def search_by_name():
     return render_template('found_recipes.html', recipe=mongo.db.recipe.find_one({'$text': {'$search': search_term }}))
 
 # Search cuisines
-@app.route('/search_cuisine/<cuisine_name>')
+@app.route('/search_cuisine/<cuisine_name>', methods=['GET''POST'])
 def search_cuisine(cuisine_name):
-    search_term = request.form.get('cuisine_name')  
-    recipe = mongo.db.recipe.find({'recipe' : search_term})
-    print(recipe)
+    if request.method == 'POST':
+        search_term = request.form.get('cuisine_name')  
+        recipe = mongo.db.recipe.find({'recipe' : search_term})
+        print(recipe)
     return render_template("found_cuisines.html", recipe=recipe)
 
 # Search ingredients
